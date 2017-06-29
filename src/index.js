@@ -2,16 +2,21 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import {createStore, applyMiddleware} from 'redux';
 import {Provider} from 'react-redux';
-import reducer from './reducers';
+import {BrowserRouter, Route} from 'react-router-dom';
 
-import App from './components/app'
+import reducer from './reducers';
+import PostsIndex from './components/posts_index';
 
 const store = createStore(reducer, applyMiddleware());
 
 const AppContainter = () => {
     return (
         <Provider store={store}>
-            <App />
+            <BrowserRouter>
+                <div>
+                    <Route path="/" component={PostsIndex} />
+                </div>
+            </BrowserRouter>
         </Provider>
     );
 };
